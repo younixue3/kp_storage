@@ -1,0 +1,4 @@
+storage/migrations/*
+storage/__pycache__/*
+env/
+kp_storage/__pycache__/*

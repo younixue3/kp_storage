@@ -7,7 +7,7 @@ from rest_framework.response import Response
 @api_view(['POST'])
 def store_file(request):
     print(request.FILES)
-    if request.query_params['single'] == 'true':
+    if 'single' in  request.query_params['single']:
         file = request.FILES['image']
         fs = FileSystemStorage()
         filename = fs.save(file.name, file)

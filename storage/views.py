@@ -10,12 +10,13 @@ def store_file(request):
     if 'single' in request.query_params:
         file = request.FILES['image']
         fs = FileSystemStorage()
-        filename = fs.save(file.name, file)
+        filename = file.name
+        filename = fs.save(str(file.name).replace(' ', '_'), file)
         uploaded_file_url = fs.url(filename)
     else:
         file = request.FILES['bukti_pembayaran']
         fs = FileSystemStorage()
-        filename = fs.save(file.name, file)
+        filename = fs.save(str(file.name).replace(' ', '_'), file)
         uploaded_file_url = fs.url(filename)
     return Response(request.build_absolute_uri(uploaded_file_url))
 
